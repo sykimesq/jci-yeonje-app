@@ -59,7 +59,7 @@ export default function Header() {
               'w-7 h-7 rounded-lg flex items-center justify-center text-white font-bold text-xs',
               isSpecial ? 'bg-amber-500' : 'bg-gray-300'
             )}>
-              SP
+              특
             </div>
             <div className="hidden sm:block">
               <div className={cn(
