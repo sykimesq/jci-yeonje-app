@@ -108,6 +108,186 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      {/* JCI Mission */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">JCI 미션</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 className="text-sm font-bold text-jci-600 mb-2">한국어</h3>
+            <div className="text-sm text-jci-muted leading-relaxed">
+              <p>청년들에게 긍정적인 변화를 만들 수 있는 리더십 개발의 기회를 제공한다.</p>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-jci-600 mb-2">English</h3>
+            <div className="text-sm text-jci-muted leading-relaxed">
+              <p>To provide young people with leadership development opportunities that create positive change.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* JCI Vision */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">JCI 비전</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 className="text-sm font-bold text-jci-600 mb-2">한국어</h3>
+            <div className="text-sm text-jci-muted leading-relaxed">
+              <p>청년 리더들의 선도적인 글로벌 네트워크를 구축한다.</p>
+            </div>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-jci-600 mb-2">English</h3>
+            <div className="text-sm text-jci-muted leading-relaxed">
+              <p>To be the leading global network of young leaders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* JCI Korea 강령 */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">한국JC 강령</h2>
+        <div className="text-sm text-jci-muted leading-relaxed space-y-1">
+          <p>우리는</p>
+          <p>시대적, 사회적 사명을 자각하고</p>
+          <p>JC 본연의 이념을 같이하는</p>
+          <p>청년들의 웅지와 정열을 한데모아</p>
+          <p>자주적, 자립적, 자발적 실천력으로</p>
+          <p>복지사회 건설과 세계평화를 이룩하는 데</p>
+          <p>총력을 다한다.</p>
+        </div>
+      </div>
+
+      {/* 한국JC 노래 */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">한국JC 노래</h2>
+        <div className="text-sm text-jci-muted mb-4">
+          <p>황우겸 작사 / 김광수 작곡</p>
+        </div>
+        <div className="flex justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/한국jc음악악보.jpg"
+            alt="한국JC 노래 악보"
+            className="max-w-full h-auto rounded-lg shadow-sm"
+          />
+        </div>
+      </div>
+
+      {/* 한국청년회의소 */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">한국청년회의소</h2>
+        <div className="text-sm text-jci-muted space-y-1.5 leading-relaxed">
+          <p><span className="font-medium text-jci-700">사무국 :</span> ㉾133-847 서울시 성동구 용답동 228-2번지 한국JC회관 4층</p>
+          <p><span className="font-medium text-jci-700">전 화 :</span> (02)2244-9521</p>
+          <p><span className="font-medium text-jci-700">팩 스 :</span> (02)2245-5883</p>
+          <p><span className="font-medium text-jci-700">홈페이지 :</span> www.koreajc.or.kr</p>
+          <p><span className="font-medium text-jci-700">E-mail :</span> webmaster@koreajc.or.kr</p>
+        </div>
+      </div>
+
+      {/* 부산지구청년회의소 롬 사무국 */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">부산지구청년회의소 롬 사무국</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-jci-500 text-white">
+                <th className="text-left px-3 py-2 rounded-tl-lg">LOM</th>
+                <th className="text-left px-3 py-2">주소</th>
+                <th className="text-left px-3 py-2 rounded-tr-lg">전화/팩스</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-jci-border">
+              {[
+                ['부산지구', '진구 전포대로 179, 보해이브빌 2층', 'T 647-0904 / F 647-0906'],
+                ['부산', '남구 지게골로 52-15, 벽산한성기린상가 3층 301호', 'T 631-0044 / F 631-0046'],
+                ['북부산', '진구 전포대로 179, 보해이브빌 203호', 'T 806-7868 / F 816-2752'],
+                ['동부산', '동구 고관로 173, 동원드림타운 상가 3F', 'T 635-9001 / F 645-9007'],
+                ['부산동래', '동래구 충렬대로 306 한양@ 상가B동 221호', 'T 555-6137 / F 557-0122'],
+                ['남부산', '남구 신선로 458, 304호', 'T 313-4442 / F 324-4442'],
+                ['부산사상', '사상구 백양대로 458, 1호 통일상가 2층', 'T 313-4442 / F 324-4442'],
+                ['부산해운대', '해운대구 좌동순환로 427, 2층', 'T 741-5295 / F 741-5291'],
+                ['중부산', '중구 중앙동5가 11-1 동흥B/D 403', 'T 465-4742 / F -'],
+                ['부산진', '진구 신암로 70, 서면항도타워 상가B 3층', 'T 817-1860 / F 817-1861'],
+                ['부산동북', '진구 신암로 32 경남@상가 3층 305호', 'T 634-4567 / F 635-3453'],
+                ['부산서면', '진구 전포대로 179 보해이브빌 205호', 'T - / F -'],
+                ['부산항도', '진구 신암로 72, 항도타워상가 B동 3층', 'T 636-0400 / F 636-0401'],
+                ['부산금정', '금정구 식물원로75번길 33 경보상가 302', 'T 508-7064~5 / F 508-7066'],
+                ['부산수영', '수영구 광안해변로 399, 민락씨랜드 3층', 'T 806-7868 / F 816-2752'],
+                ['부산연제', '연제구 거제3동 38-45 경남@상가 2F 5호', 'T 755-0771 / F 755-1046'],
+                ['부산서부', '서구 까치고개로233번길 21 태양빌딩 5층', 'T 244-5550 / F -'],
+                ['부산기장', '기장군 기장읍 차성로 290 동양프라자 403호', 'T 721-0450 / F 721-0715'],
+                ['부산강서', '강서구 대저로 105-1 2층', 'T 271-3060 / F 271-3061'],
+              ].map((row, i) => (
+                <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                  <td className="px-3 py-2 font-medium text-jci-800 whitespace-nowrap">{row[0]}</td>
+                  <td className="px-3 py-2 text-jci-muted">{row[1]}</td>
+                  <td className="px-3 py-2 text-jci-muted whitespace-nowrap">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 형제JC */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">형제JC</h2>
+        <div className="bg-jci-bg rounded-xl p-5">
+          <h3 className="font-bold text-jci-800 mb-3">삼천포청년회의소</h3>
+          <div className="text-sm text-jci-muted space-y-1.5 leading-relaxed">
+            <p><span className="font-medium text-jci-700">사무국 :</span> ㉾52562 경남 사천시 숲뫼1길 47(향촌동)</p>
+            <p><span className="font-medium text-jci-700">전 화 :</span> (055)833-3672</p>
+            <p><span className="font-medium text-jci-700">팩 스 :</span> (055)832-4193</p>
+            <p><span className="font-medium text-jci-700">홈페이지 :</span> www.samcheonpojc.org</p>
+            <p><span className="font-medium text-jci-700">E-mail :</span> skyju07@naver.com</p>
+          </div>
+        </div>
+      </div>
+
+      {/* 우호JC */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">우호JC</h2>
+        <div className="bg-jci-bg rounded-xl p-5">
+          <h3 className="font-bold text-jci-800 mb-3">서울강서청년회의소</h3>
+          <div className="text-sm text-jci-muted space-y-1.5 leading-relaxed">
+            <p><span className="font-medium text-jci-700">사무국 :</span> ㉾07528 서울 강서구 양천로 401 강서한강자이 B동</p>
+            <p><span className="font-medium text-jci-700">전 화 :</span> (02)2603-0873</p>
+            <p><span className="font-medium text-jci-700">팩 스 :</span> (02)2693-9943</p>
+            <p><span className="font-medium text-jci-700">홈페이지 :</span> http://club.cyworld.com/gs-jci</p>
+            <p><span className="font-medium text-jci-700">E-mail :</span> leehisuk2@nate.com</p>
+          </div>
+        </div>
+      </div>
+
+      {/* 해외자매 JC */}
+      <div className="bg-white rounded-xl border border-jci-border p-6 md:p-8">
+        <h2 className="text-lg font-bold text-jci-800 mb-4">해외자매 JC</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-jci-bg rounded-xl p-5">
+            <h3 className="font-bold text-rose-600 mb-3">대만 대송산JC</h3>
+            <div className="text-sm text-jci-muted space-y-1.5 leading-relaxed">
+              <p><span className="font-medium text-jci-700">담당 :</span> 陳琮勳 Sean Chen</p>
+              <p><span className="font-medium text-jci-700">주소 :</span> 台北市 八德路 四段 463號 2F</p>
+              <p><span className="font-medium text-jci-700">전화 :</span> T:2768-7739</p>
+              <p><span className="font-medium text-jci-700">팩스 :</span> F:2764-4374</p>
+            </div>
+          </div>
+          <div className="bg-jci-bg rounded-xl p-5">
+            <h3 className="font-bold text-rose-600 mb-3">일본 히라즈까JC</h3>
+            <div className="text-sm text-jci-muted space-y-1.5 leading-relaxed">
+              <p><span className="font-medium text-jci-700">담당 :</span> 尾崎 圭記</p>
+              <p><span className="font-medium text-jci-700">주소 :</span> 神奈川 平塚市 松風町2番10號</p>
+              <p><span className="font-medium text-jci-700">전화 :</span> T:0463-21-6474</p>
+              <p><span className="font-medium text-jci-700">팩스 :</span> F:0463-21-7393</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

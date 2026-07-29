@@ -17,6 +17,7 @@ export default async function MembersPage() {
     .from('members')
     .select('*')
     .eq('year_id', yearId)
+    .eq('member_type', 'regular')
     .order('order_index', { ascending: true })
 
   return <MembersClient members={members || []} yearId={yearId} />

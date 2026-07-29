@@ -10,10 +10,5 @@ export default async function PastPresidentsPage() {
     .select('*')
     .order('order_index', { ascending: true })
 
-  const { data: specialPresidents } = await (supabase as any)
-    .from('special_past_presidents')
-    .select('*')
-    .order('order_index', { ascending: true })
-
-  return <PastPresidentsClient presidents={presidents || []} specialPresidents={specialPresidents || []} />
+  return <PastPresidentsClient presidents={presidents || []} />
 }

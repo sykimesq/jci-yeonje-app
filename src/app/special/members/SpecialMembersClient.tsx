@@ -9,10 +9,12 @@ import { cn } from '@/lib/utils'
 
 const TABS = [
   { key: 'all', label: '전체' },
-  { key: 'regular', label: '정회원' },
+  { key: 'special', label: '특우회원' },
+  { key: 'honorary', label: '명예회원' },
+  { key: 'junior', label: '준회원' },
 ]
 
-export default function MembersClient({ members, yearId }: { members: Member[]; yearId: string }) {
+export default function SpecialMembersClient({ members }: { members: Member[] }) {
   const [activeTab, setActiveTab] = useState('all')
   const [search, setSearch] = useState('')
   const [selectedMember, setSelectedMember] = useState<Member | null>(null)
@@ -22,23 +24,21 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
     if (activeTab !== 'all') {
       list = list.filter(m => m.member_type === activeTab)
     }
-    if (search.trim()) {
-      const q = search.trim().toLowerCase()
-      list = list.filter(m =>
-        m.name.toLowerCase().includes(q) ||
-        m.name_hanja.toLowerCase().includes(q) ||
-        m.workplace?.toLowerCase().includes(q) ||
-        m.jc_roles?.some(r => r.toLowerCase().includes(q))
-      )
-    }
-    return list
+    if (!search.trim()) return list
+    const q = search.trim().toLowerCase()
+    return list.filter(m =>
+      m.name.toLowerCase().includes(q) ||
+      m.name_hanja?.toLowerCase().includes(q) ||
+      m.workplace?.toLowerCase().includes(q) ||
+      m.jc_roles?.some(r => r.toLowerCase().includes(q))
+    )
   }, [members, activeTab, search])
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-jci-800">회원명부</h1>
-        <p className="text-jci-muted mt-1">부산연제청년회의소 회원 정보</p>
+        <h1 className="text-2xl font-bold text-amber-800">특우회 명단</h1>
+        <p className="text-jci-muted mt-1">연제JC특우회 회원 정보 (총 {members.length}명)</p>
       </div>
 
       {/* Tabs */}
@@ -50,7 +50,7 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
             className={cn(
               'px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors',
               activeTab === tab.key
-                ? 'bg-jci-500 text-white'
+                ? 'bg-amber-500 text-white'
                 : 'bg-white text-jci-muted hover:text-jci-800 border border-jci-border'
             )}
           >
@@ -73,7 +73,7 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full pl-10 pr-10 py-2.5 bg-white border border-jci-border rounded-xl
-            text-sm focus:outline-none focus:ring-2 focus:ring-jci-300 focus:border-jci-400"
+            text-sm focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-amber-400"
         />
         {search && (
           <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-jci-muted hover:text-jci-800">
@@ -120,10 +120,10 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
                   <img
                     src={selectedMember.photo_url}
                     alt={selectedMember.name}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-jci-100"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-amber-100"
                   />
                 ) : (
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-jci-400 to-jci-600
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-600
                     flex items-center justify-center text-white font-bold text-2xl">
                     {selectedMember.name.charAt(0)}
                   </div>
@@ -172,7 +172,7 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
                     <label className="text-xs font-medium text-jci-muted uppercase">JC 경력</label>
                     <div className="flex flex-wrap gap-1 mt-1">
                       {selectedMember.jc_roles.map((role, i) => (
-                        <span key={i} className="text-xs bg-jci-50 text-jci-600 px-2 py-1 rounded-md">{role}</span>
+                        <span key={i} className="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded-md">{role}</span>
                       ))}
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
                     <ul className="mt-1 space-y-1">
                       {selectedMember.jc_awards.map((award, i) => (
                         <li key={i} className="text-sm text-jci-800 flex items-start gap-2">
-                          <span className="text-jci-gold mt-0.5">★</span>
+                          <span className="text-amber-500 mt-0.5">★</span>
                           {award}
                         </li>
                       ))}

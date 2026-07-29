@@ -7,6 +7,13 @@ export const NAV_ITEMS = [
   { label: '정관/규정', href: '/regulations' },
 ]
 
+export const SPECIAL_NAV_ITEMS = [
+  { label: '특우회 홈', href: '/special' },
+  { label: '특우회 명단', href: '/special/members' },
+  { label: '특우회 역대회장', href: '/special/past-presidents' },
+  { label: '특우회 정관', href: '/special/regulations' },
+]
+
 export const ADMIN_NAV_ITEMS = [
   { label: '대시보드', href: '/admin/dashboard', icon: 'LayoutDashboard' },
   { label: '회원 관리', href: '/admin/members', icon: 'Users' },
