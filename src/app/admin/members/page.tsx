@@ -138,6 +138,10 @@ function MemberFormModal({ member, onClose, onSaved }: { member: Member | null; 
     address: member?.address || '',
     workplace: member?.workplace || '',
     position_in_company: member?.position_in_company || '',
+    workplace_address: member?.workplace_address || '',
+    workplace_phone: member?.workplace_phone || '',
+    workplace_fax: member?.workplace_fax || '',
+    home_address: member?.home_address || '',
     member_type: (member?.member_type || 'regular') as any,
     jc_roles: member?.jc_roles?.join('\n') || '',
     jc_awards: member?.jc_awards?.join('\n') || '',
@@ -168,6 +172,10 @@ function MemberFormModal({ member, onClose, onSaved }: { member: Member | null; 
       address: form.address,
       workplace: form.workplace,
       position_in_company: form.position_in_company,
+      workplace_address: form.workplace_address,
+      workplace_phone: form.workplace_phone,
+      workplace_fax: form.workplace_fax,
+      home_address: form.home_address,
       member_type: form.member_type as any,
       jc_roles: form.jc_roles.split('\n').filter(Boolean),
       jc_awards: form.jc_awards.split('\n').filter(Boolean),
@@ -219,13 +227,30 @@ function MemberFormModal({ member, onClose, onSaved }: { member: Member | null; 
             </div>
           </div>
           <div>
-            <label className="block text-xs font-medium text-jci-muted mb-1">연락처</label>
+            <label className="block text-xs font-medium text-jci-muted mb-1">휴대전화</label>
             <input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})}
               className="w-full px-3 py-2 border border-jci-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-300" />
           </div>
           <div>
-            <label className="block text-xs font-medium text-jci-muted mb-1">주소</label>
-            <input value={form.address} onChange={e => setForm({...form, address: e.target.value})}
+            <label className="block text-xs font-medium text-jci-muted mb-1">직장 주소</label>
+            <input value={form.workplace_address} onChange={e => setForm({...form, workplace_address: e.target.value})}
+              className="w-full px-3 py-2 border border-jci-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-300" />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-medium text-jci-muted mb-1">직장 전화</label>
+              <input value={form.workplace_phone} onChange={e => setForm({...form, workplace_phone: e.target.value})}
+                className="w-full px-3 py-2 border border-jci-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-300" />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-jci-muted mb-1">직장 팩스</label>
+              <input value={form.workplace_fax} onChange={e => setForm({...form, workplace_fax: e.target.value})}
+                className="w-full px-3 py-2 border border-jci-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-300" />
+            </div>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-jci-muted mb-1">집 주소</label>
+            <input value={form.home_address} onChange={e => setForm({...form, home_address: e.target.value})}
               className="w-full px-3 py-2 border border-jci-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-jci-300" />
           </div>
           <div className="grid grid-cols-2 gap-4">
