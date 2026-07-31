@@ -12,12 +12,12 @@ const POSITION_GROUPS: Record<string, string> = {
   '운영위원': 'staff',
   '기획위원': 'staff',
   '사무국장': 'staff',
-  '내무이사': 'director',
-  '외무이사': 'director',
-  '홍보이사': 'director',
   '총무이사': 'director',
   '재정이사': 'director',
-  '특우회담당이사': 'director',
+  '내무이사': 'general_director',
+  '외무이사': 'general_director',
+  '홍보이사': 'general_director',
+  '특우회담당이사': 'general_director',
   '회원확충분과위원장': 'committee',
   '지역사회개발분과위원장': 'committee',
 }
@@ -33,6 +33,7 @@ export default function ExecutivesClient({
   const auditPositions = positions.filter(p => POSITION_GROUPS[p.position_name] === 'audit')
   const staffPositions = positions.filter(p => POSITION_GROUPS[p.position_name] === 'staff')
   const directorPositions = positions.filter(p => POSITION_GROUPS[p.position_name] === 'director')
+  const generalDirectorPositions = positions.filter(p => POSITION_GROUPS[p.position_name] === 'general_director')
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -43,7 +44,7 @@ export default function ExecutivesClient({
 
       {/* Leadership */}
       <div className="mb-8">
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center gap-6 mb-6">
           {leaderPositions.map((pos) => (
             <div key={pos.id} className="text-center">
               <div className={cn(
@@ -56,20 +57,6 @@ export default function ExecutivesClient({
               </div>
               <div className="font-bold text-jci-800">{pos.member_name}</div>
               <div className="text-xs text-jci-muted">{pos.position_name}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Connector line */}
-        <div className="flex justify-center gap-8 mb-6">
-          {leaderPositions.slice(1).map((pos) => (
-            <div key={pos.id} className="text-center">
-              <div className="w-14 h-14 rounded-full bg-jci-50 border-2 border-jci-200
-                flex items-center justify-center mx-auto mb-1">
-                <span className="font-bold text-jci-600">{pos.member_name.charAt(0)}</span>
-              </div>
-              <div className="text-sm font-medium text-jci-800">{pos.member_name}</div>
-              <div className="text-[10px] text-jci-muted">{pos.position_name}</div>
             </div>
           ))}
         </div>
@@ -101,9 +88,9 @@ export default function ExecutivesClient({
         </div>
       </div>
 
-      {/* Directors */}
+      {/* Directors (총무이사, 재정이사) */}
       <div className="mb-8">
-        <h2 className="text-sm font-bold text-jci-muted uppercase mb-3">이사</h2>
+        <h2 className="text-sm font-bold text-jci-muted uppercase mb-3">총무이사 / 재정이사</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {directorPositions.map((pos) => (
             <div key={pos.id} className="bg-white rounded-xl border border-jci-border p-3">
@@ -113,6 +100,21 @@ export default function ExecutivesClient({
           ))}
         </div>
       </div>
+
+      {/* General Directors (이사) */}
+      {generalDirectorPositions.length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-sm font-bold text-jci-muted uppercase mb-3">이사</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {generalDirectorPositions.map((pos) => (
+              <div key={pos.id} className="bg-white rounded-xl border border-jci-border p-3">
+                <div className="font-medium text-jci-800 text-sm">{pos.member_name}</div>
+                <div className="text-[10px] text-jci-muted">{pos.position_name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Committees */}
       {committees.length > 0 && (
