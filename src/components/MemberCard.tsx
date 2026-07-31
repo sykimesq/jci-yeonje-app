@@ -62,16 +62,28 @@ export default function MemberCard({ member, onClick }: MemberCardProps) {
                 <span>{member.workplace}{member.position_in_company ? ` / ${member.position_in_company}` : ''}</span>
               </div>
             )}
+            {member.workplace_address && (
+              <div className="flex items-center gap-1.5 truncate">
+                <MapPin size={13} />
+                <span className="truncate">{member.workplace_address}</span>
+              </div>
+            )}
+            {member.workplace_phone && (
+              <div className="flex items-center gap-1.5">
+                <Phone size={13} />
+                <span>{member.workplace_phone}</span>
+              </div>
+            )}
             {member.phone && (
               <div className="flex items-center gap-1.5">
                 <Phone size={13} />
                 <span>{member.phone}</span>
               </div>
             )}
-            {member.address && (
+            {member.home_address && (
               <div className="flex items-center gap-1.5 truncate">
                 <MapPin size={13} />
-                <span className="truncate">{member.address}</span>
+                <span className="truncate">{member.home_address}</span>
               </div>
             )}
           </div>

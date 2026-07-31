@@ -146,12 +146,6 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
                     <p className="text-sm text-jci-800">{selectedMember.birth_date}</p>
                   </div>
                 )}
-                {selectedMember.phone && (
-                  <div>
-                    <label className="text-xs font-medium text-jci-muted uppercase">연락처</label>
-                    <p className="text-sm text-jci-800">{selectedMember.phone}</p>
-                  </div>
-                )}
                 {selectedMember.workplace && (
                   <div>
                     <label className="text-xs font-medium text-jci-muted uppercase">직장</label>
@@ -161,10 +155,28 @@ export default function MembersClient({ members, yearId }: { members: Member[]; 
                     </p>
                   </div>
                 )}
-                {selectedMember.address && (
+                {selectedMember.workplace_address && (
                   <div>
-                    <label className="text-xs font-medium text-jci-muted uppercase">주소</label>
-                    <p className="text-sm text-jci-800">{selectedMember.address}</p>
+                    <label className="text-xs font-medium text-jci-muted uppercase">직장 주소</label>
+                    <p className="text-sm text-jci-800">{selectedMember.workplace_address}</p>
+                  </div>
+                )}
+                {selectedMember.workplace_phone && (
+                  <div>
+                    <label className="text-xs font-medium text-jci-muted uppercase">직장 전화</label>
+                    <p className="text-sm text-jci-800">{selectedMember.workplace_phone}</p>
+                  </div>
+                )}
+                {selectedMember.phone && (
+                  <div>
+                    <label className="text-xs font-medium text-jci-muted uppercase">휴대전화</label>
+                    <p className="text-sm text-jci-800">{selectedMember.phone}</p>
+                  </div>
+                )}
+                {selectedMember.home_address && (
+                  <div>
+                    <label className="text-xs font-medium text-jci-muted uppercase">집 주소</label>
+                    <p className="text-sm text-jci-800">{selectedMember.home_address}</p>
                   </div>
                 )}
                 {selectedMember.jc_roles && selectedMember.jc_roles.length > 0 && (

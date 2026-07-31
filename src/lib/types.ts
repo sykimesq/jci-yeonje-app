@@ -66,6 +66,10 @@ export interface Member {
   address: string
   workplace: string
   position_in_company: string
+  workplace_address: string
+  workplace_phone: string
+  workplace_fax: string
+  home_address: string
   jc_roles: string[]
   jc_awards: string[]
   photo_url: string
