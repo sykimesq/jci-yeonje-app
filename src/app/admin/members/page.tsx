@@ -29,6 +29,7 @@ export default function AdminMembersPage() {
       .from('members')
       .select('*')
       .eq('year_id', years.id)
+      .eq('member_type', 'regular')
       .order('order_index', { ascending: true })
     if (data) setMembers(data)
   }
