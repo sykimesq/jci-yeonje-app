@@ -24,6 +24,14 @@ export const ADMIN_NAV_ITEMS = [
   { label: '연도 관리', href: '/admin/years', icon: 'CalendarDays' },
 ]
 
+export const ADMIN_SPECIAL_NAV_ITEMS = [
+  { label: '특우회 회원 관리', href: '/admin/special/members', icon: 'Users' },
+  { label: '특우회 임원 관리', href: '/admin/special/executives', icon: 'Briefcase' },
+  { label: '특우회 일정 관리', href: '/admin/special/schedules', icon: 'Calendar' },
+  { label: '특우회 역대회장', href: '/admin/special/past-presidents', icon: 'History' },
+  { label: '특우회 정관 관리', href: '/admin/special/regulations', icon: 'FileText' },
+]
+
 export const MONTHS = [
   '1월', '2월', '3월', '4월', '5월', '6월',
   '7월', '8월', '9월', '10월', '11월', '12월',

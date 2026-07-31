@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { ADMIN_NAV_ITEMS } from '@/lib/constants'
+import { ADMIN_NAV_ITEMS, ADMIN_SPECIAL_NAV_ITEMS } from '@/lib/constants'
 import {
   LayoutDashboard, Users, Briefcase, Calendar, History, FileText, CalendarDays,
   LogOut, Menu, X, ChevronRight
@@ -25,6 +25,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [session, setSession] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [tab, setTab] = useState<'jc' | 'special'>('jc')
   const router = useRouter()
   const pathname = usePathname()
   const supabase = createClient()
@@ -40,6 +41,15 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     })
   }, [supabase, router])
 
+  // Auto-detect tab from pathname
+  useEffect(() => {
+    if (pathname.startsWith('/admin/special')) {
+      setTab('special')
+    } else {
+      setTab('jc')
+    }
+  }, [pathname])
+
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push('/admin/login')
@@ -52,6 +62,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     </div>
   )
   if (!session) return null
+
+  const navItems = tab === 'jc' ? ADMIN_NAV_ITEMS : ADMIN_SPECIAL_NAV_ITEMS
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
@@ -82,8 +94,34 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
         </div>
 
+        {/* Tab Switcher */}
+        <div className="flex border-b border-jci-border">
+          <button
+            onClick={() => setTab('jc')}
+            className={cn(
+              'flex-1 py-2.5 text-xs font-medium text-center transition-colors',
+              tab === 'jc'
+                ? 'text-jci-600 border-b-2 border-jci-500 bg-jci-50/50'
+                : 'text-jci-muted hover:text-jci-800'
+            )}
+          >
+            연제JC
+          </button>
+          <button
+            onClick={() => setTab('special')}
+            className={cn(
+              'flex-1 py-2.5 text-xs font-medium text-center transition-colors',
+              tab === 'special'
+                ? 'text-amber-600 border-b-2 border-amber-500 bg-amber-50/50'
+                : 'text-jci-muted hover:text-jci-800'
+            )}
+          >
+            특우회
+          </button>
+        </div>
+
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          {ADMIN_NAV_ITEMS.map((item) => (
+          {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -91,7 +129,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors',
                 pathname === item.href || pathname.startsWith(item.href + '/')
-                  ? 'bg-jci-100 text-jci-600'
+                  ? tab === 'jc' ? 'bg-jci-100 text-jci-600' : 'bg-amber-100 text-amber-700'
                   : 'text-jci-muted hover:text-jci-800 hover:bg-gray-50'
               )}
             >
